@@ -16,7 +16,7 @@
   <body>
     <!-- 웹 페이지 접속 시 강제로 로그인 화면으로 이동-->
     <script>
-      location.href = '/test.jsp';
+      location.href = 'LogIn/Login.jsp';
     </script>
   </body>
 </html>

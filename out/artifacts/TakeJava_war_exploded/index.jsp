@@ -10,7 +10,7 @@
 
 <html>
   <head>
-    <title>동의대학교 컴퓨터소프트웨어공학과 컴퓨터 좌석 예약 시스템</title>
+    <title>컴퓨터</title>
   </head>
 
   <body>
