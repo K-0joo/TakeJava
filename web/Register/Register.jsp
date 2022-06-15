@@ -41,6 +41,7 @@
                     <h3 style="text-align: center;">회원가입</h3>
 
                     <!-- 아이디 -->
+                    <div style="padding: 30px 0px 0px 0px;"/>
                     <div class="form-group">
                         <!-- 회원 가입에서도 userID or userPassword는 동일하게 가져가고, 회원가입에 필요한 나머지 속성추가 -->
                         <input type="text" class="form-control" placeholder="아이디" name="stu_id" maxlength="20">

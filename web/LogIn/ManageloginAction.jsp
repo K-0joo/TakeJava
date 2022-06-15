@@ -60,7 +60,7 @@
         script.println("<script>");
 
         // 메인 페이지로 넘겨주는 선언을 해준다.
-        script.println("location.href = 'test.jsp'");
+        script.println("location.href = '../admin/adminMain.jsp'");
 
         // 스크립트 태그를 닫아준다.
         script.println("</script>");

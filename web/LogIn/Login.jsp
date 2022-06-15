@@ -36,8 +36,8 @@
   </div>
 
   <!-- 조교 전용 페이지로 이동 -->
-  <ul>
-    <li><a href="ManageLogIn.jsp">관리자 로그인</a></li>
+  <ul class="navbar-nav navbar-expand-lg navbar-light">
+    <li class="nav-item" ><a class="nav-link active" aria-current="page" href="ManageLogIn.jsp">관리자 로그인</a></li>
   </ul>
 
   <!-- 버튼 추가 파트.(아직 논의 X) -->
@@ -62,6 +62,7 @@
         <h3 style="text-align: center;">로그인</h3>
 
         <!-- 아이디 입력 공간 구현 -->
+        <div style="padding: 30px 0px 0px 0px;"/>
         <div class="form-group">
 
           <!-- name="userID" 쪽은 나중에 서버 프로그램을 작성할 때 사용하기 때문에 대소문자 구별 -->
@@ -76,6 +77,8 @@
 
         <!-- 로그인 버튼 구현 -->
         <input type="submit" class="btn btn-primary form-control" value="로그인">
+
+        <div style="padding: 20px 0px 0px 0px;"/>
 
         <button type="button" class="btn btn-link" onclick="location.href='../Register/Register.jsp'">회원가입</button>
 
