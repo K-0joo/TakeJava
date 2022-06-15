@@ -27,7 +27,7 @@
     </nav>
 
 
-    <div class="container">
+    <div class="container" align="center">
         <div class="col-lg-4"></div>
 
         <!-- 회원가입 폼은 위의 양식은 일치하며, 내부 폼만 바꿔준다. -->

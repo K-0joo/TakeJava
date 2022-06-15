@@ -37,14 +37,14 @@
 
     <!-- 학생 전용 페이지로 이동 -->
     <ul>
-        <li><a href="LogIn.jsp">학생 로그인</a></li>
+        <li><a href="Login.jsp">학생 로그인</a></li>
     </ul>
 
     <!-- 버튼 추가 파트.(아직 논의 X) -->
 
 </nav>
 
-<div class="container">
+<div class="container" align="center">
 
     <!-- 로그인 폼 작성 -->
     <!-- col은 colspan, lg는 large screen, 4는 pc 버전에서 3분의 1 정도 크기고 모바일에선 절반 크기를 지정해준 것-->

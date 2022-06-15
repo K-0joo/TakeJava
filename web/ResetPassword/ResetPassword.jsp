@@ -40,7 +40,7 @@
 
 </nav>
 
-<div class="container">
+<div class="container" align="center">
 
     <!-- 로그인 폼 작성 -->
     <!-- col은 colspan, lg는 large screen, 4는 pc 버전에서 3분의 1 정도 크기고 모바일에선 절반 크기를 지정해준 것-->
