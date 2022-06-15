@@ -36,15 +36,15 @@
     </div>
 
     <!-- 학생 전용 페이지로 이동 -->
-    <ul>
-        <li><a href="LogIn.jsp">학생 로그인</a></li>
+    <ul class="navbar-nav navbar-expand-lg navbar-light">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="Login.jsp">학생 로그인</a></li>
     </ul>
 
     <!-- 버튼 추가 파트.(아직 논의 X) -->
 
 </nav>
 
-<div class="container">
+<div class="container" align="center">
 
     <!-- 로그인 폼 작성 -->
     <!-- col은 colspan, lg는 large screen, 4는 pc 버전에서 3분의 1 정도 크기고 모바일에선 절반 크기를 지정해준 것-->
@@ -62,6 +62,7 @@
                 <h3 style="text-align: center;">로그인</h3>
 
                 <!-- 아이디 입력 공간 구현 -->
+                <div style="padding: 30px 0px 0px 0px;"/>
                 <div class="form-group">
 
                     <!-- name="userID" 쪽은 나중에 서버 프로그램을 작성할 때 사용하기 때문에 대소문자 구별 -->
