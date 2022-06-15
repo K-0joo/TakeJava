@@ -40,7 +40,7 @@
 
 </nav>
 
-<div class="container">
+<div class="container" align="center">
 
     <!-- 로그인 폼 작성 -->
     <!-- col은 colspan, lg는 large screen, 4는 pc 버전에서 3분의 1 정도 크기고 모바일에선 절반 크기를 지정해준 것-->
@@ -57,7 +57,9 @@
                 <!-- 로그인 페이지 내부의 문장 가운데 정렬로 삽입 -->
                 <h3 style="text-align: center;">비밀번호 초기화</h3>
 
-                <h5 style="text-align: left;">비밀번호를 초기화할 아이디를 입력해 주세요.</h5>
+                <div style="padding: 30px 0px 0px 0px;"/>
+
+                <p style="text-align: left;">비밀번호를 초기화할 아이디를 입력해 주세요.</p>
 
                 <!-- 아이디 입력 공간 구현 -->
                 <div class="form-group">

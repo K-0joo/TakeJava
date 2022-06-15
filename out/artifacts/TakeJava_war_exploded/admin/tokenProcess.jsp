@@ -1,5 +1,4 @@
 <%@ page import="com.takejava.DAO.TokenDAO" %>
-<%@ page import="java.io.PrintWriter" %>
 
 <jsp:useBean id="token" class="com.takejava.DTO.TokenDTO"/>
 
