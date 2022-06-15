@@ -19,7 +19,7 @@
 <header>
     <div class="head_box">
         <h1>컴퓨터소프트웨어공학과 좌석예약 시스템(관리자용)</h1>
-        <button class="logout" onclick="alert('로그아웃 하시겠습니까?')">로그아웃</button>
+        <button class="logout" onclick="alert('로그아웃 하시겠습니까?'); location.href='logout.jsp';">로그아웃</button>
     </div>
     <nav class="nav_bar">
         <a href="adminSchedule.jsp">시간표 관리</a>

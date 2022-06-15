@@ -7,6 +7,13 @@
         <element id="directory" name="classes">
           <element id="module-output" name="TakeJava" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/../../../../../apache-tomcat-9.0.59/lib/jsp-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../../../../apache-tomcat-9.0.59/lib/jstl-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../../../../apache-tomcat-9.0.59/lib/servlet-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../../../../apache-tomcat-9.0.59/lib/tomcat-dbcp.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../../../../apache-tomcat-9.0.59/lib/tomcat-jdbc.jar" />
+        </element>
       </element>
     </root>
   </artifact>

@@ -30,7 +30,6 @@
     <orderEntry type="library" name="javax.servlet.api" level="project" />
     <orderEntry type="library" exported="" name="groovy-4.0.0" level="project" />
     <orderEntry type="library" exported="" name="jquery-3.1.1" level="application" />
-    <orderEntry type="library" exported="" name="mysql-connector-java-8.0.29" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -96,6 +95,8 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="taglibs-standard-impl-1.2.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.59" level="application_server_libraries" />
+    <orderEntry type="library" exported="" name="mysql-connector-java-8.0.29" level="project" />
+
     <orderEntry type="module-library">
       <library>
         <CLASSES>
