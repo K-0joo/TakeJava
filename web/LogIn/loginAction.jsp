@@ -28,11 +28,11 @@
 
 <body>
     <%
-//        String userID = null;
-//        if(session.getAttribute("userID") != null) {
-//            userID = (String) session.getAttribute("userID");
+//        String stu_id = null;
+//        if(session.getAttribute("stu_id") != null) {
+//            stu_id = (String) session.getAttribute("stu_id");
 //        }
-//        if(userID != null) {
+//        if(stu_id != null) {
 //            PrintWriter script = response.getWriter();
 //            script.println("<script>");
 //            script.println("alert('이미 로그인이 되어 있습니다.')");

@@ -45,10 +45,8 @@ public class UserDAO {
         // 입력받은 userID와 userPassword가 일치하는지 확인을 하기 위해 db 내에서 userID 값에 대한 PW를 조회하는 쿼리를 넣어줌.
         // 해킹방지를 위해 중간에 ?를 넣어준다.
         String SQL = "SELECT stu_pwd FROM takejava.student WHERE stu_id = ?";
-        System.out.printf("로그인 실행");
         // try-catch문으로 예외처리를 해준다.
         try{
-            System.out.println("try문 실행");
             // pstmt에 어떠한 정해진 sql 문장을 데이터베이스에 사입하는 형식으로 이스턴스를 가져온다.
             pstmt = conn.prepareStatement(SQL);
 
@@ -60,7 +58,6 @@ public class UserDAO {
 
             // 로그인 실행 파트
             if(rs.next()){
-                System.out.println("로그인 시작");
                 // 만약 rs에 들어있는 값과 db 내부의 userPW가 일치하면 login 성공
                 if(rs.getString(1).equals(stu_pwd)) {
                     //로그인 성공
@@ -83,24 +80,24 @@ public class UserDAO {
 
     }
 
-//    // 회원가입 정보 넣는 곳
-//    public int join(User user){
-//        String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?)";
-//        try{
-//            pstmt = conn.prepareStatement(SQL);
-//            pstmt.setString(1, user.getUserID());
-//            pstmt.setString(2, user.getUserPassword());
-//            pstmt.setString(3, user.getUserName());
-//            pstmt.setString(4, user.getUserEmail());
-//            pstmt.setString(5, user.getUserPhone());
-//            pstmt.setString(6, user.getUserToken());
-//
-//            return pstmt.executeUpdate();
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//        // 데이터 베이스 오류
-//        return -1;
-//    }
+    // 회원가입 정보 넣는 곳
+    public int Register(User user){
+        String SQL = "INSERT INTO takejava.student VALUES(?, ?, ?, ?, ?)";
+        try{
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, user.getStu_id());
+            pstmt.setString(2, user.getStu_name());
+            pstmt.setString(3, user.getStu_pwd());
+            pstmt.setString(4, user.getStu_phone());
+            pstmt.setString(5, user.getStu_email());
+            //pstmt.setString(6, user.getUserToken());
+
+            return pstmt.executeUpdate();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        // 데이터 베이스 오류
+        return -3;
+    }
 }
