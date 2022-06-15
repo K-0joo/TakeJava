@@ -77,7 +77,7 @@
         <!-- 로그인 버튼 구현 -->
         <input type="submit" class="btn btn-primary form-control" value="로그인">
 
-        <button type="button" class="btn btn-link" onclick="location.href='../../Register/Register.jsp'">회원가입</button>
+        <button type="button" class="btn btn-link" onclick="location.href='../Register/Register.jsp'">회원가입</button>
 
         <button type="button" class="btn btn-link" onclick="location.href='.jsp'">비밀번호 찾기</button>
       </form>
