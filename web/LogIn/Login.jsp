@@ -79,7 +79,7 @@
 
         <button type="button" class="btn btn-link" onclick="location.href='../Register/Register.jsp'">회원가입</button>
 
-        <button type="button" class="btn btn-link" onclick="location.href='.jsp'">비밀번호 찾기</button>
+        <button type="button" class="btn btn-link" onclick="location.href='../ResetPassword/ResetPassword.jsp'">비밀번호 찾기</button>
       </form>
     </div>
   </div>
