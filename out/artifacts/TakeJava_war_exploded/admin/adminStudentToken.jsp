@@ -6,8 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="java.sql.*" %>
-<%@page import="com.takejava.*" %>
 <%@ page import="com.takejava.DAO.TokenDAO" %>
 
 <jsp:useBean id="token" class="com.takejava.DTO.TokenDTO"/>
@@ -29,17 +27,16 @@
 <div>
     <%
         TokenDAO dao = TokenDAO.getInstance();
-        String token1 = dao.getToken();
+        int token1 = dao.selectToken(); // 데이터베이스에서 가져옴
         token.setToken(token1);
     %>
 
-    <span>현재 등록된 토큰 : ${token.getToken()}</span>
+    <p>현재 등록된 토큰 : ${token.getToken()}</p>
 
-    <form action="newToken.jsp" method="post">
-        새로운 토큰 : <input type="text" id="newtoken" value="">
-        <input type="submit" id="maketoken" value="토큰 발행">
+    <form action="tokenProcess.jsp" method="post">
+        새로운 토큰 : <input type="text" name="newtoken" placeholder="숫자만 입력해주세요">
+        <input type="submit" value="토큰 발행">
     </form>
-
 </div>
 
 <jsp:include page="adminFooter.jsp"/>

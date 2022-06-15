@@ -2,13 +2,13 @@ package com.takejava.DTO;
 
 public class TokenDTO {
 
-    protected String token;
+    protected int token;
 
-    public String getToken() {
+    public int getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(int token) {
         this.token = token;
     }
 }
