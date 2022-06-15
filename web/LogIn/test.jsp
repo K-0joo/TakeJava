@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- 교수님 소스 -->
 <%@page import="java.sql.*" %>
-<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -11,9 +11,9 @@
 <body>
 <%
     final String JdbcDriver = "com.mysql.cj.jdbc.Driver";
-    final String JdbcUrl = "jdbc:mysql://localhost:3306/takejava?serverTimezone=Asia/Seoul";
-    final String User = "takejava";
-    final String Password = "takejava";
+    final String JdbcUrl = "jdbc:mysql://localhost:3306/security?serverTimezone=Asia/Seoul";
+    final String User = "root";
+    final String Password = "1030";
 
     try{
         //1. JDBC 드라이버 적재
@@ -26,7 +26,7 @@
         Statement stmt = conn.createStatement();
 
         //4. SQL 질의(query) 실행
-        String sql = "SELECT  * FROM takejava.admin";
+        String sql = "SELECT  * FROM admin";
         ResultSet rs = stmt.executeQuery(sql);
 
         //5. SQL 질의 결과 활용

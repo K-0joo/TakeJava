@@ -20,13 +20,13 @@ public class UserDAO {
         // 예외 처리를 하기 위해서 try-catch 문을 써준다.
         try {
             // dbURL 안에 localhost라는 것은 본인 컴퓨터에 접속을 의미하고 3306 포트에 연결된 BBSdb에 접속할 수 있게 해준다.
-            String dbURL = "jdbc:mysql://localhost:3306/takejava?serverTimezone=Asia/Seoul";
+            String dbURL = "jdbc:mysql://localhost:3306/security?serverTimezone=Asia/Seoul";
 
             // db에 접속하는 ID를 담는 부분
-            String dbID = "takejava";
+            String dbID = "root";
 
             // db에 접속하는 PW를 담는 부분
-            String dbPassword = "takejava";
+            String dbPassword = "1030";
 
             // mysql에 접속할 수 있는 driver를 찾을 수 있게 해주는 코드
             // driver라는 건 mysql에 접속할 수 있도록 매개체 역할을 해주는 라이브러리이다.
@@ -44,7 +44,7 @@ public class UserDAO {
     public int login(String stu_id, String stu_pwd){
         // 입력받은 userID와 userPassword가 일치하는지 확인을 하기 위해 db 내에서 userID 값에 대한 PW를 조회하는 쿼리를 넣어줌.
         // 해킹방지를 위해 중간에 ?를 넣어준다.
-        String SQL = "SELECT stu_pwd FROM takejava.student WHERE stu_id = ?";
+        String SQL = "SELECT stu_pwd FROM student WHERE stu_id = ?";
         System.out.printf("로그인 실행");
         // try-catch문으로 예외처리를 해준다.
         try{

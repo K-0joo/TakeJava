@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManageUserDAO {
     // Database 접근 객체로 사용할 conn을 선언해준다.
@@ -13,26 +15,27 @@ public class ManageUserDAO {
     private PreparedStatement pstmt;
     private ResultSet rs;
 
+
     // MySQL 접속
     // UserDAO를 생성자로 만들어 주고, 자동적으로 데이터베이스 연결이 이뤄지게 해주는 코드를 짠다.
     public ManageUserDAO(){
         // 예외 처리를 하기 위해서 try-catch 문을 써준다.
         try {
             // dbURL 안에 localhost라는 것은 본인 컴퓨터에 접속을 의미하고 3306 포트에 연결된 BBSdb에 접속할 수 있게 해준다.
-            String dbURL = "jdbc:mysql://localhost:3306/takejava?serverTimezone=Asia/Seoul";
+            String dbURL = "jdbc:mysql://localhost:3306/security?serverTimezone=Asia/Seoul";
 
             // db에 접속하는 ID를 담는 부분
-            String dbID = "takejava";
+            String dbID = "root";
 
             // db에 접속하는 PW를 담는 부분
-            String dbPassword = "takejava";
+            String dbPassword = "1030";
 
             // mysql에 접속할 수 있는 driver를 찾을 수 있게 해주는 코드
             // driver라는 건 mysql에 접속할 수 있도록 매개체 역할을 해주는 라이브러리이다.
             Class.forName("com.mysql.jdbc.Driver");
 
             // getConnection 함수 내부에 dbURL에 root root로 접속할 수 있게 해주는 데이터를 넣어 완료되면 conn 객체 안에 접속된 정보가 담기게 된다.
-            //java.sql.Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
         } catch (Exception e) {
             // 오류의 내용을 내부 콘솔에 띄우기 위한 함수이다.
             e.printStackTrace();
@@ -77,5 +80,104 @@ public class ManageUserDAO {
         // 데이터베이스 오류
         return -2;
     }
+
+    public boolean isSeminar(int classNum) {
+        String sql ="SELECT * FROM seminar where seminar_class_num =? and Date_Format(now(),'%Y-%m-%d')=date_format(CONCAT(cast(seminar_year as char),'-',cast(seminar_month as char),'-',cast(seminar_day as char),'-'),'%Y-%m-%d') and seminar_start_time<Date_Format(now(),'%H:%i:%s') and seminar_end_time > Date_Format(now(),'%H:%i:%s');";
+        try{
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, classNum);
+
+            ResultSet resultSet = pstmt.executeQuery();
+            if (resultSet.next()) {
+             return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            //종료 ~
+        }
+        return false;
+
+    }
+
+    public boolean seminarReservationStatus(SeminarForm seminar) {
+        String SQL ="select * from seminar where seminar_year = ? and seminar_month = ? and seminar_day=? and seminar_class_num =?  and seminar_start_time<Date_Format(?,'%H:%i:%s') and seminar_end_time > Date_Format(?,'%H:%i:%s');";
+        try{
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setInt(1, seminar.getYear());
+            pstmt.setInt(2, seminar.getMonth());
+            pstmt.setInt(3, seminar.getDay());
+            pstmt.setInt(4, seminar.getClassNum());
+            pstmt.setString(5, seminar.getStart());
+            pstmt.setString(6,seminar.getEnd());
+            ResultSet resultSet = pstmt.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            //종료 ~
+        }
+        return false;
+    }
+
+    public int insertSeminar(SeminarForm seminar) {
+        String SQL ="insert into seminar values(?,?,?,?,?,?,?);";
+        try{
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, seminar.getProfName());
+            pstmt.setInt(2, seminar.getYear());
+            pstmt.setInt(3, seminar.getMonth());
+            pstmt.setInt(4, seminar.getDay());
+            pstmt.setInt(5, seminar.getClassNum());
+            pstmt.setString(6, seminar.getStart());
+            pstmt.setString(7,seminar.getEnd());
+            int i = pstmt.executeUpdate();
+            return i;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            //종료 ~
+        }
+        return 0;
+    }
+    public List<Seat> seatStatus(int classNum){
+
+       // String SQL = "Select * from seats s left join reservation_history r on s.seat_num = r.rsvp_seat_num and s.seat_class_num = r.rsvp_class_num  left join student st on st.stu_id = r.rsvp_stu_id  where s.seat_class_num=? and r. rsvp_reservation_date=Date_Format(now(),'%Y-%m-%d') and r.rsvp_end_time >=Date_Format(now(),'%H:%i:%s') or (s.seat_class_num=? and s.seat_state='n');";
+        String SQL ="Select * from seats s left join reservation_history r on s.seat_num = r.rsvp_seat_num and s.seat_class_num = r.rsvp_class_num  left join student st on st.stu_id = r.rsvp_stu_id  where s.seat_class_num=? and r. rsvp_reservation_date=Date_Format(now(),'%Y-%m-%d') and r.rsvp_end_time >=Date_Format(now(),'%H:%i:%s') or (s.seat_class_num=? and r.rsvp_extend_time >=Date_Format(now(),'%H:%i:%s')) or (s.seat_class_num=? and s.seat_state='n');";
+
+
+        List<Seat> seatList =new ArrayList<>();
+        try{
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setInt(1, classNum);
+            pstmt.setInt(2, classNum);
+            pstmt.setInt(3, classNum);
+
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                Seat seat = new Seat();
+                seat.setSeatStatus(resultSet.getString("seat_state").equals("y"));
+                seat.setEndTime(resultSet.getString("rsvp_end_time"));
+                seat.setExtendTime(resultSet.getString("rsvp_extend_time"));
+                seat.setSetNumber(resultSet.getInt("seat_num"));
+                seat.setStartTime(resultSet.getString("rsvp_start_time"));
+                seat.setPhoneNumber(resultSet.getInt("stu_phone"));
+                seat.setUsername(resultSet.getString("stu_name"));
+                seat.setEmail(resultSet.getString("stu_email"));
+                seatList.add(seat);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            //종료 ~
+        }
+        return seatList;
+
+    }
+
+
+
 
 }
